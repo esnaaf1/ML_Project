@@ -127,3 +127,11 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+#VS Studio code
+settings.json
+**/.vscode
+.vscode/
+#ignore Config file
+config.js
+**/.DS_store
+**/.DS_Store
