@@ -61,49 +61,25 @@
       <div class="row">
         <div class="col-12 col-sm-12 col-md-12">
             <div class="jumbotron">
-                 <h1>K-Nearest Neighbor (KNN) Machine Learning Algorithm</h1>
+                 <h1><strong>K-Nearest Neighbor (KNN) Machine Learning Algorithm</strong></h1>
                  <p> 
-                <u>Background:</u>   KNN algorithm is a simple, easy to implement supervised machine learning algorithm that can be used to solve both regression and classification problems.   The KNN algorithm assumes that similar things are near each other.  <br> <br>
-            <u>How KNN algorithm works:</u>
-                    <ol>
-                        <li>Load the data</li>
-                        <li>Initialize K to chosen number of neighbors</li>
-                        <li>For each instance in the data:</li>
-                    <p>A. Calculate the distance between the query example and the current example from the data.</p>
-                    <p>B. Add the distance and the index of the example to an ordered collection</p>
-                    <li>Sort the ordered collection of distances and indices from smallest to largest (in ascending order) by the distances</li>
-                    <li>Pick the first K entries from the sorted collection</li>
-                    <li>Get the labels of the selected K entries</li>
-                    <li>If regression, return the mean of the K labels</li>
-                    <li>If classification, return the mode of the K labels</li></ol></p>
-                    <br> <br>
-                   <p><u>Implementation:<br></u>   
-                    We used KNN as a classifier algorithm, and used the heart disease dataset found in the <a href='https://archive.ics.uci.edu/ml/datasets/Heart+Disease'>UCI Machine Learning website </a><br><br>
-                    After splitting the heart disease data into train and test sets, the data was scaled and encoded. A KNN classifier model was setup, we looped through a list of K values to determine the best accuracy score.<br><br>
-                    The results showed that the K=5 results in the best score for both train and test data.<br>
+                  <p><strong>Introduction</strong></p>
+                  <p>A k-nearest-neighbor (KNN) algorithm, is an approach to data classification that estimates how likely a data point is to be a member of one group or the other depending on what group the data points nearest to it are in.</p>
+                  <p>KNN is an example of a "lazy learner" algorithm, meaning that it does not build a model using the training set until a query of the data set is performed.</p>
+                  <p>The elegance of KNN algorithm lies in its simplicity. Despite its various drawback’s such as high compute time in high dimension data it is still widely used in areas of bio-informatics and computer vision tasks.</p>
+                  <p>KNN robust with regards to the search space; for instance, the classes do not have to be linearly separable. &nbsp;There are only two parameters to tune: k and distance metric.</p>
+                  <p><strong>Implementation on the Heart Disease dataset&nbsp;</strong></p>
+                  <p>We used KNN as a classifier algorithm.&nbsp;&nbsp;After splitting the heart disease data into train and test sets, the data was scaled and encoded. A KNN classifier model was setup, we looped through a list of K values to determine the best accuracy score.</p>
+                  <p>The results showed that the K=5 results in the best score for both train and test data.</p>
                    <center><img src="resources/k5which.jpg" alt="K nearest results"></center>       
          </p>
          <p>The overall accuracy of the model was 0.784.</p>
-<p><u>Algorithm modification and tuning:</u> Given the limited data samples, K-Fold Cross-Validation was used to resample and evaluate the KNN model. Cross-validation is primary used in machine learning estimate the skills of the model on unseen data.The general procedure is as follows:</p>
-<ol>
-  <li>Shuffle the dataset randomly</li>
-  <li>Split the dataset into k groups</li>
-  <li>For each unique group
-    <ol>
-      <p>A. Take the group as a hold out or test data</p>
-      <p>B. Take the remaining groups as a training data set</p>
-      <p>C. Fit a model on the training set and evaluate it on the test set</p>
-      <p>D. Retain the evaluation score and discard the model</p>
-    </ol>
-  </li>
-  <li>Summarize the skill of the model using the sample of model evaluation scores</li>
-</ol>
-<p>When usingK-Fold Cross-validation procedure, it is important to note that each observation in the dataset is assigned to an individual group and stays in that group for the duration of the procedure. This means that each sample is given the opportunity to be used in the hold out set 1 time and used to train the model k-1 times.K values [1,3,5,7,9.11,13,15,17,19,21], were used in this procedure.</p>
-<p>In addition, GridSearchCV along with cross-validation was used to evaluate the model across various parameters.</p>
-<p>The graph below shows mean accuracy across the different k values.</p>
+         <p><u>Algorithm modification and tuning:&nbsp;</u>&nbsp; Given the limited data samples, K-Fold Cross-Validation was used to resample and evaluate the KNN model. &nbsp;</p>
+         <p>In k-fold cross-validation, the original sample is randomly partitioned into k equal size sub samples. Of the k sub samples, a single sub sample is retained as the validation data for testing the model, and the remaining k-1 sub samples are used as training data. The cross-validation process is then repeated k times (the folds), with each of the k sub samples used exactly once as the validation data. The k results from the folds can then be averaged (or otherwise combined) to produce a single estimation. The advantage of this method is that all observations are used for both training and validation, and each observation is used for validation exactly once.</p>
+         <p>In addition, GridSearchCV along with cross-validation was used to evaluate the model across various parameters. &nbsp;</p>
+         <p>The graph below shows mean accuracy across the different k values after the k-fold cross-validation and GridSearchCV was used.</p>
  <center> <img src="resources/accuracy.jpg"></center>
 </p>
-<p><u>Conclusion:</u>   KNN is very simple to implement and robust with regards to the search space; for instance, the classes do not have to be linearly separable.There are only two parameters to tune (k and distance metric.). The main disadvantage of the algorithm is that it is expensive testing of each new observation, due to the need to compute its distance from all known observation which becomes problematic with a dataset with a large number of features.</p>
         </div>
     </div>
       </div>

@@ -61,24 +61,45 @@
       <div class="row">
         <div class="col-12 col-sm-12 col-md-12">
             <div class="jumbotron">
-                 <h1>Machine Learning and Heart Disease Prediction</h1>
-                 <p> 
-                    This website project was created for the final project for the <a href='https://bootcamp.umn.edu/data/'>University of Minnesota Data Analytics BootCamp</a> our group is going through.  This final project was designed to showcase our skills with machine learning and using that to  work with the data.
-                    <br><br>
-                    The group is made up of Beryl Kaczmarczik, Farshad Esnaashari, Katherine Rootes, and Matt Pollari.
-                    
-                   <br><br> We ended up taking the  <a href='https://archive.ics.uci.edu/ml/datasets/Heart+Disease'>Heart Disease data set from the University of California, Irvine machine learning repository.</a> 
- 
-                   We chose this data set because it had categorical data that we could use to test on and it also had been cleaned up so that it had a much lower bar to entry to actually start doing machine learning projects on the data set. 
-                   
-                   <br><br> 
-                   They have also trimmed down the attributes from the 76 initially there to a smaller subset of 14 attributes they selected. With them already selecting 14 subset of attributes they have largely set the stage for us to start just working with it and not do much processing work.
+                 <h1><strong>Support Vector Machine (SVM) Learning Algorithm</strong></h1>
+                 <p><strong>Introduction</strong></p>
+                 <p>Support vector machine is a simple algorithm that every machine learning expert should have in his/her arsenal. Support vector machine is highly preferred by many as it produces significant accuracy with less computation power. Support Vector Machine, abbreviated as SVM can be used for both regression and classification tasks. But, it is widely used in classification objectives.
+                 </p>
+                 <p>The objective of the support vector machine algorithm is to find a hyperplane in an N-dimensional space(N — the number of features) that distinctly classifies the data points.
+                 </p>
+                 <img src="resources/SVM_image1.png" alt="image 1" width=200 height=200>
+                 <img src="resources/SVM_image2.png" alt="image 2" width =200 height =200>
+                 <p>To separate the two classes of data points, there are many possible hyperplanes that could be chosen. Our objective is to find a plane that has the maximum margin, i.e the maximum distance between data points of both classes. Maximizing the margin distance provides some reinforcement so that future data points can be classified with more confidence.</p>
+<p><strong>Hyperplanes and Support Vectors</strong>
+  </p>
+  <p>Hyperplanes are decision boundaries that help classify the data points. Data points falling on either side of the hyperplane can be attributed to different classes. Also, the dimension of the hyperplane depends upon the number of features. If the number of input features is 2, then the hyperplane is just a line. If the number of input features is 3, then the hyperplane becomes a two-dimensional plane. It becomes difficult to imagine when the number of features exceeds 3.
+    <center><img src="resources/SVM_image3.png" alt="image 4" width=600 height=300></center>
+  </p>
+  <p>Support vectors are data points that are closer to the hyperplane and influence the position and orientation of the hyperplane. Using these support vectors, we maximize the margin of the classifier. Deleting the support vectors will change the position of the hyperplane. These are the points that help us build our SVM.</p>
+  <p><strong>&nbsp;</strong></p>
+  <p><strong>&nbsp;</strong></p>
+  <p><strong>Implementation on the Heart Disease dataset</strong></p>
+  <p>The key advantage for the Heart Disease dataset is that SVM is effective for high dimensional spaces. &nbsp;The data set has 13 features (5 variable and 8 categorical). &nbsp;Once the categorical data is reformatted for binary there are 28 features.</p>
+  <p>&nbsp;</p>
+  <p>Validation curves were used to visualize and ultimately select the input parameters to maximize the accuracy of the model. &nbsp;A linear kernel was selected and a gamma value of 0.1 to maximize the cross-validation score. &nbsp;The decision function type was irrelevant.
+    <center><img src="resources/SVM_image4.png" alt="image3" width = 600 height = 400></center>
+  </p>
+  <p>&nbsp; <center><img src="resources/SVM_image5.png" alt="image 5" width = 600 height = 400 ></center>
+    </p>
+    <p>Next, the size of the training set was evaluated using a learning curve. &nbsp;It was confirmed that the default train/test/split method from scikit-learn splits training (120) and testing (74) data sets where the scores converge.</p>
+   <center><img src="resources/SVM_image6.png" alt="image 6" width = 600 height = 400></center>
+    <p>Running the test data set, the following classification report results:
+   <center><img src="resources/SVM_table1.png" alt="table 1"></center>
+    </p>
+    <p>Running this data set on the pre-set train/test split resulted in the following:</p>
+<p>&nbsp;</p>
+<ul>
+  <li>82% of the time Heart Disease or Healthy was predicted correctly (Accuracy)</li>
+  <li>83% of Heart Disease predictions were Heart Disease (Precision)</li>
+  <li>82% of Heart Disease samples were correctly predicted (Recall)</li>
+  <li>Overall 82% harmonic average of precision and recall (F1 Score)</li>
+</ul>
 
-                   <br><br> 
-                   What we decided to do with this data set and machine learning was to look at different models and methods for predicting and which way would work best for this data set at predicting heart disease. Click on the different models above to see how each of them performed and our analysis.
-
-                   
-         </p>
         </div>
     </div>
       </div>

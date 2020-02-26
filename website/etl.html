@@ -61,24 +61,449 @@
       <div class="row">
         <div class="col-12 col-sm-12 col-md-12">
             <div class="jumbotron">
-                 <h1>Machine Learning and Heart Disease Prediction</h1>
-                 <p> 
-                    This website project was created for the final project for the <a href='https://bootcamp.umn.edu/data/'>University of Minnesota Data Analytics BootCamp</a> our group is going through.  This final project was designed to showcase our skills with machine learning and using that to  work with the data.
-                    <br><br>
-                    The group is made up of Beryl Kaczmarczik, Farshad Esnaashari, Katherine Rootes, and Matt Pollari.
-                    
-                   <br><br> We ended up taking the  <a href='https://archive.ics.uci.edu/ml/datasets/Heart+Disease'>Heart Disease data set from the University of California, Irvine machine learning repository.</a> 
- 
-                   We chose this data set because it had categorical data that we could use to test on and it also had been cleaned up so that it had a much lower bar to entry to actually start doing machine learning projects on the data set. 
-                   
-                   <br><br> 
-                   They have also trimmed down the attributes from the 76 initially there to a smaller subset of 14 attributes they selected. With them already selecting 14 subset of attributes they have largely set the stage for us to start just working with it and not do much processing work.
+                 <h1>ETL Summary:</h1>
+                 <p>A Jupyter notebook was used to clean the original data set. Once the file was loaded to the notebook, the data was put into a Pandas dataframe. Each input variable was inspected for any missing data. If a row was missing an input, the row was dropped from the dataframe. This created a dataframe with 13 input categorical and numerical variables with one categorical output variable indicating if the patient was healthy or sick with heart disease. The cleaning process condensed the original file from 303 entries down to 296. This cleaned data was then saved into a new csv file for reference.</p>
 
-                   <br><br> 
-                   What we decided to do with this data set and machine learning was to look at different models and methods for predicting and which way would work best for this data set at predicting heart disease. Click on the different models above to see how each of them performed and our analysis.
+                 <p>As part of the ETL process to develop machine learning models, the 13 different input variables were evaluated through several feature selection techniques to better understand their potential influence to determining the output variable if someone was healthy or sick.</p>
+                 
+                 <p>First, the numerical inputs like age and maximum heart rate were plotted on a histogram to understand if any of the input data in the full data set was skewed. The only numerical input variable that appeared skewed was “old peak” which refers to a finding on an electrocardiogram related to ST depression induced by exercise. The majority of patients have an old peak value of 0. It is not possible to have a negative old peak value, which makes the histogram appear to have a right skewed distribution. Overall, the numerical inputs did not appear to be inappropriately skewed.</p>
+                 <center> <img src="resources/maxheart.png" alt="Max Heart Rate"> <img src="resources/oldpeak.png" alt="Old Peak"></center>
+                 <p>As a next step, the full data set was split into train and test data sets using the SciKit-Learn “train_test_split” function. A random seed of 42 was used to prevent splitting the full data set into new groups each time the notebook was run. To verify the test and train data was stratified appropriately, the numerical inputs of the test and train data were plotted against one another to ensure they overlapped and nothing was skewed due to the random splitting of the data. Graphing the data demonstrated the test and train data overlapped nicely on each other with the test data making up a smaller subset of the full data set.</p>
+                 <center> <img src="resources/predict-heart.png" alt="Max Heart Rate"></center>
+                 <center><p><em>Figure 2. An example of graphing the split test and train cholesterol input data to identify any skewed splitting in the data</em></p></center>
 
-                   
-         </p>
+                 <p>ANOVA statistical functions from SciPy were also used to calculate if there was a statistical difference in the means between the test and train numerical input data. Stats such as one-way ANOVA, two-sided T-Test with unequal variances, and Kruskal-Wallis H-Test at 95% confidence intervals were all used for the analysis. The p-value between the test and train populations were compared to determine statistical significance. The majority of numerical inputs had p-values greater than 0.05, which implies there was no statistical difference between the means of the test and train data. The one exception was cholesterol, due to a potential outlier in the test data that has a patient with cholesterol above 500 (see Figure 2). Due to the limited full data set, the outlier was not removed from the test data set. </p>
+                <em><p><center>Table 1. P-values of the statistical tests comparing the mean of the test and train split numerical input data</em></p></center>
+                <div align="center">
+                  <table border="1" cellpadding="0" cellspacing="0">
+                    <tbody>
+                      <tr>
+                        <td valign="top" width="25%">
+                          <p>Numerical Input</p>
+                        </td>
+                        <td valign="top" width="25%">
+                          <p>One-Way ANOVA</p>
+                        </td>
+                        <td valign="top" width="25%">
+                          <p>Two-Sided T-Test</p>
+                        </td>
+                        <td valign="top" width="25%">
+                          <p>Kruskel-Wallis</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td valign="top" width="25%">
+                          <p>Age</p>
+                        </td>
+                        <td valign="top" width="25%">
+                          <pre>0.703</pre>
+                        </td>
+                        <td valign="top" width="25%">
+                          <pre>0.720</pre>
+                        </td>
+                        <td valign="top" width="25%">
+                          <pre>0.687</pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td valign="top" width="25%">
+                          <p>BPS</p>
+                        </td>
+                        <td valign="top" width="25%">
+                          <pre>0.977</pre>
+                        </td>
+                        <td valign="top" width="25%">
+                          <p>0.976</p>
+                        </td>
+                        <td valign="top" width="25%">
+                          <pre>0.634</pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td valign="top" width="25%">
+                          <p>Cholesterol</p>
+                        </td>
+                        <td valign="top" width="25%">
+                          <pre>0.021</pre>
+                        </td>
+                        <td valign="top" width="25%">
+                          <pre>0.033</pre>
+                        </td>
+                        <td valign="top" width="25%">
+                          <pre>0.005</pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td valign="top" width="25%">
+                          <p>Max Heart Rate</p>
+                        </td>
+                        <td valign="top" width="25%">
+                          <pre>0.832</pre>
+                        </td>
+                        <td valign="top" width="25%">
+                          <pre>0.845</pre>
+                        </td>
+                        <td valign="top" width="25%">
+                          <pre>0.939</pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td valign="top" width="25%">
+                          <p>Old Peak</p>
+                        </td>
+                        <td valign="top" width="25%">
+                          <pre>0.276</pre>
+                        </td>
+                        <td valign="top" width="25%">
+                          <pre>0.242</pre>
+                        </td>
+                        <td valign="top" width="25%">
+                          <pre>0.357</pre>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div><br>
+                <p>Next, SciKit-Learn feature selection functions were used to evaluate the importance of the different inputs. In order to use these functions, the data had to be treated in the way the team wanted to analyze the data with the models. Therefore, a function was created to split, encode, and scale the data as it would be used for the models. As mentioned previously, the “test_train_split” function was used with a random seed to split the full data set. Numerical inputs were scaled with the MinMax scaler function from Sci-kit Learn, while categorical input data was encoded using Pandas get_dummies function. Next, the categorical output data was encoded with the Sci-Kit Learn LabelEncoder function. Finally, the test and train inputs and output variables were saved into separate csv files for the models to use.</p>
+
+                <p>The first Sci-Kit Learn feature selection function used was the SelectKBest function; a univariate chi-square analysis which is used to identify significant input features based on univariate statistical tests. As an input to the function, “chi2” was called out to apply chi-squared statistics to the data set, since the output is categorical. The return values were ranking scores from highest to lowest of the input data. Because the categorical inputs were encoded, each option for one categorical input variable was given its own score. For example, the “thal” input had the choices of “rev”, “norm”, and “fix”. “Thal_rev” ranked high with a score of 34.2, while the “thal_fix” ranked low with a score of 0.74. Overall, the most unintuitive result was cholesterol, which ranked near the bottom. Common sense would make the average person assume cholesterol to be a more significant contributor to heart disease. </p>
+
+                <p>Table 2. Chi-Square Score Rank of the Input Features</p>
+<div align="center">
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody>
+      <tr>
+        <td valign="top" width="19.81566820276498%">
+          <p>Input ID</p>
+        </td>
+        <td valign="top" width="56.68202764976959%">
+          <p>Specs</p>
+        </td>
+        <td valign="top" width="23.502304147465438%">
+          <p>Score</p>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" width="19.81566820276498%">
+          <p>27</p>
+        </td>
+        <td valign="top" width="56.68202764976959%">
+          <p>thal_rev</p>
+        </td>
+        <td valign="top" width="23.502304147465438%">
+          <p>34.200294</p>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" width="19.81566820276498%">
+          <p>17</p>
+        </td>
+        <td valign="top" width="56.68202764976959%">
+          <p>exerciseInducedAngina_true</p>
+        </td>
+        <td valign="top" width="23.502304147465438%">
+          <p>33.418728</p>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" width="19.81566820276498%">
+          <p>9</p>
+        </td>
+        <td valign="top" width="56.68202764976959%">
+          <p>chestPain_asympt</p>
+        </td>
+        <td valign="top" width="23.502304147465438%">
+          <p>32.604218</p>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" width="19.81566820276498%">
+          <p>26</p>
+        </td>
+        <td valign="top" width="56.68202764976959%">
+          <p>thal_norm</p>
+        </td>
+        <td valign="top" width="23.502304147465438%">
+          <p>28.482451</p>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" width="19.81566820276498%">
+          <p>21</p>
+        </td>
+        <td valign="top" width="56.68202764976959%">
+          <p>vesselsColored_0.0</p>
+        </td>
+        <td valign="top" width="23.502304147465438%">
+          <p>21.540903</p>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" width="19.81566820276498%">
+          <p>20</p>
+        </td>
+        <td valign="top" width="56.68202764976959%">
+          <p>slope_up</p>
+        </td>
+        <td valign="top" width="23.502304147465438%">
+          <p>18.872001</p>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" width="19.81566820276498%">
+          <p>19</p>
+        </td>
+        <td valign="top" width="56.68202764976959%">
+          <p>slope_flat</p>
+        </td>
+        <td valign="top" width="23.502304147465438%">
+          <p>15.823077</p>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" width="19.81566820276498%">
+          <p>16</p>
+        </td>
+        <td valign="top" width="56.68202764976959%">
+          <p>exerciseInducedAngina_fal</p>
+        </td>
+        <td valign="top" width="23.502304147465438%">
+          <p>14.756322</p>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" width="19.81566820276498%">
+          <p>7</p>
+        </td>
+        <td valign="top" width="56.68202764976959%">
+          <p>chestPain_abnang</p>
+        </td>
+        <td valign="top" width="23.502304147465438%">
+          <p>14.126050</p>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" width="19.81566820276498%">
+          <p>10</p>
+        </td>
+        <td valign="top" width="56.68202764976959%">
+          <p>chestPain_notang</p>
+        </td>
+        <td valign="top" width="23.502304147465438%">
+          <p>13.687783</p>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" width="19.81566820276498%">
+          <p>23</p>
+        </td>
+        <td valign="top" width="56.68202764976959%">
+          <p>vesselsColored_2.0</p>
+        </td>
+        <td valign="top" width="23.502304147465438%">
+          <p>12.695136</p>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" width="19.81566820276498%">
+          <p>5</p>
+        </td>
+        <td valign="top" width="56.68202764976959%">
+          <p>sex_fem</p>
+        </td>
+        <td valign="top" width="23.502304147465438%">
+          <p>12.124316</p>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" width="19.81566820276498%">
+          <p>22</p>
+        </td>
+        <td valign="top" width="56.68202764976959%">
+          <p>vesselsColored_1.0</p>
+        </td>
+        <td valign="top" width="23.502304147465438%">
+          <p>11.352036</p>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" width="19.81566820276498%">
+          <p>4</p>
+        </td>
+        <td valign="top" width="56.68202764976959%">
+          <p>oldPeak</p>
+        </td>
+        <td valign="top" width="23.502304147465438%">
+          <p>10.745139</p>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" width="19.81566820276498%">
+          <p>24</p>
+        </td>
+        <td valign="top" width="56.68202764976959%">
+          <p>vesselsColored_3.0</p>
+        </td>
+        <td valign="top" width="23.502304147465438%">
+          <p>7.004118</p>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" width="19.81566820276498%">
+          <p>6</p>
+        </td>
+        <td valign="top" width="56.68202764976959%">
+          <p>sex_male</p>
+        </td>
+        <td valign="top" width="23.502304147465438%">
+          <p>5.700838</p>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" width="19.81566820276498%">
+          <p>13</p>
+        </td>
+        <td valign="top" width="56.68202764976959%">
+          <p>ecg_abn</p>
+        </td>
+        <td valign="top" width="23.502304147465438%">
+          <p>3.529412</p>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" width="19.81566820276498%">
+          <p>8</p>
+        </td>
+        <td valign="top" width="56.68202764976959%">
+          <p>chestPain_angina</p>
+        </td>
+        <td valign="top" width="23.502304147465438%">
+          <p>2.826471</p>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" width="19.81566820276498%">
+          <p>15</p>
+        </td>
+        <td valign="top" width="56.68202764976959%">
+          <p>ecg_norm</p>
+        </td>
+        <td valign="top" width="23.502304147465438%">
+          <p>2.605742</p>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" width="19.81566820276498%">
+          <p>3</p>
+        </td>
+        <td valign="top" width="56.68202764976959%">
+          <p>maxHeartRate</p>
+        </td>
+        <td valign="top" width="23.502304147465438%">
+          <p>1.955725</p>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" width="19.81566820276498%">
+          <p>14</p>
+        </td>
+        <td valign="top" width="56.68202764976959%">
+          <p>ecg_hyp</p>
+        </td>
+        <td valign="top" width="23.502304147465438%">
+          <p>1.548633</p>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" width="19.81566820276498%">
+          <p>0</p>
+        </td>
+        <td valign="top" width="56.68202764976959%">
+          <p>age</p>
+        </td>
+        <td valign="top" width="23.502304147465438%">
+          <p>0.975826</p>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" width="19.81566820276498%">
+          <p>25</p>
+        </td>
+        <td valign="top" width="56.68202764976959%">
+          <p>thal_fix</p>
+        </td>
+        <td valign="top" width="23.502304147465438%">
+          <p>0.741422</p>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" width="19.81566820276498%">
+          <p>18</p>
+        </td>
+        <td valign="top" width="56.68202764976959%">
+          <p>slope_down</p>
+        </td>
+        <td valign="top" width="23.502304147465438%">
+          <p>0.684007</p>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" width="19.81566820276498%">
+          <p>1</p>
+        </td>
+        <td valign="top" width="56.68202764976959%">
+          <p>trestBps</p>
+        </td>
+        <td valign="top" width="23.502304147465438%">
+          <p>0.355538</p>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" width="19.81566820276498%">
+          <p>2</p>
+        </td>
+        <td valign="top" width="56.68202764976959%">
+          <p>cholesterol</p>
+        </td>
+        <td valign="top" width="23.502304147465438%">
+          <p>0.136939</p>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" width="19.81566820276498%">
+          <p>12</p>
+        </td>
+        <td valign="top" width="56.68202764976959%">
+          <p>bloodSugar_true</p>
+        </td>
+        <td valign="top" width="23.502304147465438%">
+          <p>0.022368</p>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" width="19.81566820276498%">
+          <p>11</p>
+        </td>
+        <td valign="top" width="56.68202764976959%">
+          <p>bloodSugar_fal</p>
+        </td>
+        <td valign="top" width="23.502304147465438%">
+          <p>0.004620</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p>The next feature selection function used was the Extra Tree Classifier. It essentially applies the same logic as a decision tree in machine learning to determine an importance score to each classifier input. The top 15 inputs with the highest score were plotted in a horizontal bar chart to help visualize their scores relative to one another. Results from this function mirrored those from the SelectKBest function.</p>
+<center> <img src="resources/scored_classifier.png" alt="scored classifier"></center>
+<center><p><em>Figure 3. Top 15 scored classifier inputs by the Extra Tree Classifier function</em></p></center>
+<br>
+<p>The final feature selection technique used on the input data was a correlation matrix with a heat map to help visualize the results. This technique shows how input variables relate to each other. It helps to identify if any of the inputs are dependent on one another and may be confounded. This technique only works on numerical data, therefore there were only five features in our data set that were evaluated with this approach. The correlation function and a Seaborn heat map were used to create the graph. Overall, the correlations between the tested features are relatively low, with the highest being between maximum heart rate and age at -0.4. </p>
+<center> <img src="resources/Input_correlation.png" alt="scored classifier"></center>
+<center><p><em>Figure 4. Input correlation results with Seaborn heat map</em></p></center><br>
+<p>When deciding what data to include in the machine learning models, the team decided to not eliminate any from the original data set. The original data set that was cleaned for this ETL work had already been paired down by other individuals from a larger set with around 48 inputs.  </p>
+
         </div>
     </div>
       </div>
