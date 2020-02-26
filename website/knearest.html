@@ -64,10 +64,39 @@
                  <h1><strong>K-Nearest Neighbor (KNN) Machine Learning Algorithm</strong></h1>
                  <p> 
                   <p><strong>Introduction</strong></p>
-                  <p>A k-nearest-neighbor (KNN) algorithm, is an approach to data classification that estimates how likely a data point is to be a member of one group or the other depending on what group the data points nearest to it are in.</p>
-                  <p>KNN is an example of a "lazy learner" algorithm, meaning that it does not build a model using the training set until a query of the data set is performed.</p>
-                  <p>The elegance of KNN algorithm lies in its simplicity. Despite its various drawback’s such as high compute time in high dimension data it is still widely used in areas of bio-informatics and computer vision tasks.</p>
-                  <p>KNN robust with regards to the search space; for instance, the classes do not have to be linearly separable. &nbsp;There are only two parameters to tune: k and distance metric.</p>
+<p>A k-nearest-neighbor (KNN) algorithm, is an approach to data classification that estimates how likely a data point is to be a member of one group or the other depending on what group the data points nearest to it are in.</p>
+<p>Here’s the basic idea of how k-NN works: suppose there are two different classes, Class A and Class B, in the dataset. Now we have a new data point, which is the red, pentagon-shaped point on the plot below and we want to predict which class this new data point belongs to. When k = 3, there are 2 Class B and 1 Class A in the 3 nearest neighbors of the new data point. The simple majority vote is Class B. Therefore, we predict the new data point belongs to Class B.</p>
+<center> <img src="resources/KNN-img1.png" width = 700 height=500></center>
+<p>To generalize, here are the steps of how k-NN works:</p>
+<ol>
+  <li>Getting the labeled data ready</li>
+  <li>Pick an appropriate k</li>
+  <li>Get the new sample to classify</li>
+  <li>Select the k entries that are closest to the new sample</li>
+  <li>Take a simple majority vote to pick a category for new sample</li>
+</ol>
+<p><u>Two Parameters of k-NN</u></p>
+<p>Although the k-NN algorithm is non-parametric, there are two parameters we usually use to build the model:&nbsp;k (the number of neighbors that will vote)and the&nbsp;distance metric.</p>
+<p>There are no strict rules around the selection of&nbsp;k. It really depends on the dataset as well as your experience when it comes to choosing an optimal k. When k is small, the prediction would be easily impacted by noise. When k is getting larger, although it reduces the impact of outliers, it will introduce more bias (Think about when we increase k to n, the number of data points in the dataset. The prediction will be the majority class in the dataset).</p>
+<p>The selection of the other parameter,&nbsp;distance metric, also varies on different cases. By default, people use Euclidean distance (L2 norm). However, Manhattan distance and Minkowski distance might also be great choices in certain scenarios.</p>
+<p><u>Pros and Cons of k-NN</u></p>
+<p>There are multiple advantages of using k-NN:</p>
+<ol>
+  <li>It is a simple machine learning model. Also very easy to implement and interpret.</li>
+  <li>There is no training phase of the model.</li>
+  <li>There are no prior assumptions on the distribution of the data. This is especially helpful when we have ill-tempered data.</li>
+  <li>Believe it or not, k-NN has a relatively high accuracy.</li>
+</ol>
+<p>Of course, there are disadvantages of the model:</p>
+<ol>
+  <li>High requirements on memory. We need to store all the data in memory in order to run the model.</li>
+  <li>Computationally expensive. Recall that the model works in the way that it selects the k nearest neighbors. This means that we need to compute the distance between the new data point to all the existing data points, which is quite expensive in computation.</li>
+  <li>Sensitive to noise. Imagine we pick a really small k, the prediction result will be highly impacted by the noise if there is any.</li>
+</ol>
+<p>&nbsp;</p>
+<p><strong>Implementation on the Heart Disease dataset&nbsp;</strong></p>
+<p>We used KNN as a classifier algorithm.&nbsp;&nbsp;After splitting the heart disease data into train and test sets, the data was scaled and encoded. A KNN classifier model was setup, we looped through a list of K values to determine the best accuracy score.</p>
+<p>The results showed that the K=5 results in the best score for both train and test data.</p>
                   <p><strong>Implementation on the Heart Disease dataset&nbsp;</strong></p>
                   <p>We used KNN as a classifier algorithm.&nbsp;&nbsp;After splitting the heart disease data into train and test sets, the data was scaled and encoded. A KNN classifier model was setup, we looped through a list of K values to determine the best accuracy score.</p>
                   <p>The results showed that the K=5 results in the best score for both train and test data.</p>
