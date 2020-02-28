@@ -51,6 +51,9 @@
             <li class="nav-item">
               <a class="nav-link active"href="analysis.html">Analysis</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link "href="credits.html">Credits</a>
+            </li>
           </ul>
           </div>
         </nav>
@@ -67,7 +70,7 @@
                  <p><u>Approach</u></p>
                  <p>The initial approach was to perform ETL on the heart disease data set and split the data using SciKit-Learn into a single train and test data set. &nbsp; This split data was then saved to csv files for each model architecture to be built and optimized. Only one version of the split train data was used to optimized the parameters of the models. By holding the train and test data split constant, it was believed that comparison of the five models would be more equivalent.</p>
                  <p>After reviewing false predictions across several models, it was observed that the majority of the false predictions were the same. Thinking through the results, it made sense that some samples may be harder to classify (potentially based on the train data) and therefore multiple models would falsely label the same data points. &nbsp;Based on this observation, to help understand the general performance of the different models, the team decided to split the full data set over multiple iterations and calculate the precision and accuracy of the models against different samplings of the test data.</p>
-                 <p>Finally, the team decided to create two voting models. &nbsp;The first was a majority vote where if three or more models predicted heart disease then the “majority prediction” would vote heart disease. Otherwise, it would be given an output of healthy. &nbsp;The second model was a conservative model based on the desire to overpredict heart disease rather than underpredict it. &nbsp;This model predicted heart disease if a single model predicted it otherwise it requires a unanimous vote to predict healthy.</p>
+                 <p>Finally, the team decided to create two voting models. The first was a majority vote where if three or more models predicted heart disease then the “majority prediction” would vote heart disease. Otherwise, it would be given an output of healthy. &nbsp;The second model was a conservative model based on the desire to overpredict heart disease rather than underpredict it. &nbsp;This model predicted heart disease if a single model predicted it otherwise it requires a unanimous vote to predict healthy.</p>
                  <p><u>Models</u></p>
                  <ul>
                    <li>Random Forest (RF)</li>

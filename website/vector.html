@@ -50,6 +50,9 @@
             <li class="nav-item">
               <a class="nav-link"href="analysis.html">Analysis</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link "href="credits.html">Credits</a>
+            </li>
           </ul>
           </div>
         </nav>
@@ -68,8 +71,8 @@
                  </p>
                  <p>The objective of the support vector machine algorithm is to find a hyperplane in an N-dimensional space(N — the number of features) that distinctly classifies the data points.
                  </p>
-                 <img src="resources/SVM_image1.png" alt="image 1" width=200 height=200>
-                 <img src="resources/SVM_Image2.png" alt="image 2" width =200 height =200>
+                <center> <img src="resources/SVM_image1.png" alt="image 1" width=200 height=200>
+                 <img src="resources/SVM_Image2.png" alt="image 2" width =200 height =200></center>
                  <p>To separate the two classes of data points, there are many possible hyperplanes that could be chosen. Our objective is to find a plane that has the maximum margin, i.e the maximum distance between data points of both classes. Maximizing the margin distance provides some reinforcement so that future data points can be classified with more confidence.</p>
 <p><strong>Hyperplanes and Support Vectors</strong>
   </p>
@@ -85,7 +88,7 @@
   <p>Validation curves were used to visualize and ultimately select the input parameters to maximize the accuracy of the model. &nbsp;A linear kernel was selected and a gamma value of 0.1 to maximize the cross-validation score. &nbsp;The decision function type was irrelevant.
     <center><img src="resources/SVM_image4.png" alt="image3" width = 600 height = 400></center>
   </p>
-  <p>&nbsp; <center><img src="resources/SVM_image_5.png" alt="image 5" width = 600 height = 400 ></center>
+  <p><center><img src="resources/SVM_image_5.png" alt="image 5" width = 600 height = 400 ></center>
     </p>
     <p>Next, the size of the training set was evaluated using a learning curve. &nbsp;It was confirmed that the default train/test/split method from scikit-learn splits training (220) and testing (74) data sets where the scores converge.</p>
    <center><img src="resources/SVM_image6.png" alt="image 6" width = 600 height = 400></center>
