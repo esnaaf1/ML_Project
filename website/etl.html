@@ -50,9 +50,6 @@
             <li class="nav-item">
               <a class="nav-link"href="analysis.html">Analysis</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link "href="credits.html">Credits</a>
-            </li>
           </ul>
           </div>
         </nav>
@@ -79,20 +76,20 @@
                  <p>ANOVA statistical functions from SciPy were also used to calculate if there was a statistical difference in the means between the test and train numerical input data. Stats such as one-way ANOVA, two-sided T-Test with unequal variances, and Kruskal-Wallis H-Test at 95% confidence intervals were all used for the analysis. The p-value between the test and train populations were compared to determine statistical significance. The majority of numerical inputs had p-values greater than 0.05, which implies there was no statistical difference between the means of the test and train data. The one exception was cholesterol, due to a potential outlier in the test data that has a patient with cholesterol above 500 (see Figure 2). Due to the limited full data set, the outlier was not removed from the test data set. </p>
                 <em><p><center>Table 1. P-values of the statistical tests comparing the mean of the test and train split numerical input data</em></p></center>
                 <div align="center">
-                  <table border="1" cellpadding="0" cellspacing="0">
+                  <table border="1" cellpadding="0" cellspacing="0" style="text-align: center;">
                     <tbody>
                       <tr>
                         <td valign="top" width="25%">
-                          <p>Numerical Input</p>
+                          <p> Numerical Input </p>
                         </td>
                         <td valign="top" width="25%">
-                          <p>One-Way ANOVA</p>
+                          <p> One-Way ANOVA </p>
                         </td>
                         <td valign="top" width="25%">
-                          <p>Two-Sided T-Test</p>
+                          <p> Two-Sided T-Test </p>
                         </td>
                         <td valign="top" width="25%">
-                          <p>Kruskel-Wallis</p>
+                          <p> Kruskel-Wallis </p>
                         </td>
                       </tr>
                       <tr>
@@ -172,9 +169,9 @@
 
                 <p>The first Sci-Kit Learn feature selection function used was the SelectKBest function; a univariate chi-square analysis which is used to identify significant input features based on univariate statistical tests. As an input to the function, “chi2” was called out to apply chi-squared statistics to the data set, since the output is categorical. The return values were ranking scores from highest to lowest of the input data. Because the categorical inputs were encoded, each option for one categorical input variable was given its own score. For example, the “thal” input had the choices of “rev”, “norm”, and “fix”. “Thal_rev” ranked high with a score of 34.2, while the “thal_fix” ranked low with a score of 0.74. Overall, the most unintuitive result was cholesterol, which ranked near the bottom. Common sense would make the average person assume cholesterol to be a more significant contributor to heart disease. </p>
 
-                <p>Table 2. Chi-Square Score Rank of the Input Features</p>
+                <div align="center"><em><p>Table 2. Chi-Square Score Rank of the Input Features</p></em></div>
 <div align="center">
-  <table border="1" cellpadding="0" cellspacing="0">
+  <table border="1" cellpadding="0" cellspacing="0" style="text-align: center;">
     <tbody>
       <tr>
         <td valign="top" width="19.81566820276498%">

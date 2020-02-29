@@ -49,9 +49,6 @@
             <li class="nav-item">
               <a class="nav-link"href="analysis.html">Analysis</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link "href="credits.html">Credits</a>
-            </li>
           </ul>
           </div>
         </nav>
@@ -60,28 +57,435 @@
 
   
       <!-- Row 1 -->
-      <div class="row">
-        <div class="col-12 col-sm-12 col-md-12">
-            <div class="jumbotron">
-                 <h1><strong>Neural Network Machine Learning Algorithm</strong></h1>
-                 <center> <img src="resources/nn-cover.jpeg" height="250" width="400"></center> 
-                 <p><strong>Introduction</strong></p>
-                 <p>Artificial neural networks are one of the main tools used in machine learning. As the “neural” part of their name suggests, they are brain-inspired systems which are intended to replicate the way that we humans learn. Neural networks consist of input and output layers, as well as (in most cases) a hidden layer consisting of units that transform the input into something that the output layer can use. They are excellent tools for finding patterns which are far too complex or numerous for a human programmer to extract and teach the machine to recognize.
-                  <center><img src="resources/NN-image1.png"></center>
-                 </p>
-                 <p>Neural networks are multi-layer networks of neurons (the blue and magenta nodes in the chart below) that we use to classify things, make predictions, etc.</p>
-<p>Below is the diagram of a simple neural network with five inputs, 5 outputs, and two hidden layers of neurons.
+<div class="row">
+  <div class="col-12 col-sm-12 col-md-12">
+    <div class="jumbotron">
+<h1><strong>Neural Network Machine Learning Algorithm</strong></h1>
+<center> <img src="resources/nn-cover.jpeg" height="250" width="400"></center> 
+<p><strong>Introduction</strong></p>
+<p>Artificial neural networks are one of the main tools used in machine learning. As the “neural” part of their name suggests, they are brain-inspired systems which are intended to replicate the way that we humans learn. Neural networks consist of input and output layers, as well as (in most cases) a hidden layer consisting of units that transform the input into something that the output layer can use. They are excellent tools for finding patterns which are far too complex or numerous for a human programmer to extract and teach the machine to recognize.</p>
+<br>
+<center><img src="resources/NN-image1.png"></center>
+<br>
+<p>Neural networks are multi-layer networks of neurons (the blue and magenta nodes in the chart below) that we use to classify things, make predictions, etc.
+Below is the diagram of a simple neural network with five inputs, 5 outputs, and two hidden layers of neurons.</p>
+<br>
   <center><img src="resources/NN-image2.png"></center>
-</p>
+<br>
 <p><strong>Implementation on the Heart Disease dataset</strong></p>
 <p>A supervised Sequential neural network model was created to compare against the other classification models. Keras open software was leveraged to create, train, and compile the model for the comparison. To prepare the data for the model, the categorical output was one-hot encoded, while the inputs were scaled using the Scikit-Learn MinMax Scaler. For the model, a Sequential neural network was developed using Dense 2D layers and a Softmax activation layer. Optimization was done by maximizing the accuracy of the model using the test data by changing the number of hidden layers, nodes in each layer, the activation function of each layer, the number of epochs, and the optimizer input for the compiler function. It should also be noted for the compiler function, the categorical cross-entropy loss function input was used.</p>
 <p>Like with the other models, the same split data was used to train and test the model. The highest accuracy achieved with the trained model against the test data was 0.824. This accuracy was acquired with several different sets of parameters. Accuracy and loss over each epoch were also graphed to help determine if a model with a certain set of parameters was under or overfitted. Overall, with the given data, several sets of parameters generated very similar neural network models. The final model saved and used for the comparison used only 1 hidden layer with the Relu activation function, 50 nodes in said layer, along with 50 epoch cycles and the optimizer function Adam.</p>
-         <center><img src="resources/model_loss.png">
-         <img src="resources/epoch_accuracy.png"></center>
-
-        </div>
+<center>   
+<img src="resources/model_loss.png">
+<img src="resources/epoch_accuracy.png">
+</center>    
+<div align="center"><em><p>
+  Figure 1 & 2. The optimized model and loss and accuracy
+</p></em></div>
+<br>
+<div align="center"><em><p>
+  Table 1. The following demonstrates the different parameter combinations used to try and optimize the model.
+  </p></em></div>
+<br>
+<div align="center">
+<table border="1">
+    <tbody>
+    <tr style="height: 31px;">
+    <td style="height: 31px;" width="79">
+    <p style="text-align: center;">
+    <b>Iteration</b></p>
+    </td>
+    <td style="height: 31px; text-align: center;" width="360">
+    <p><b>Layer Order / Layer Type / Number of Hidden Layers</b></p>
+    </td>
+    <td style="height: 31px; text-align: center;" width="72">
+    <p><b>Epoch</b></p>
+    </td>
+    <td style="height: 31px; text-align: center;" width="90">
+    <p><b>Optimizer</b></p>
+    </td>
+    <td style="height: 31px; text-align: center;" width="156">
+    <p><b>Test Data Accuracy</b></p>
+    </td>
+    </tr>
+    <tr style="height: 31px; text-align: center;">
+    <td style="height: 31px;" width="79">
+    <p>1</p>
+    </td>
+    <td style="height: 31px;" width="360">
+    <p>1 &ndash; Relu - 90</p>
+    </td>
+    <td style="height: 31px;" width="72">
+    <p>10</p>
+    </td>
+    <td style="height: 31px;" width="90">
+    <p>adam</p>
+    </td>
+    <td style="height: 31px;" width="156">
+    <p>0.81</p>
+    </td>
+    </tr>
+    <tr style="height: 31px; text-align: center;">
+    <td style="height: 31px;" width="79">
+    <p>2</p>
+    </td>
+    <td style="height: 31px;" width="360">
+    <p>1 &ndash; Relu - 90</p>
+    </td>
+    <td style="height: 31px;" width="72">
+    <p>100</p>
+    </td>
+    <td style="height: 31px;" width="90">
+    <p>adam</p>
+    </td>
+    <td style="height: 31px;" width="156">
+    <p>0.797</p>
+    </td>
+    </tr>
+    <tr style="height: 31px; text-align: center;">
+    <td style="height: 31px;" width="79">
+    <p>3</p>
+    </td>
+    <td style="height: 31px;" width="360">
+    <p>1 &ndash; Relu - 90</p>
+    </td>
+    <td style="height: 31px;" width="72">
+    <p>1000</p>
+    </td>
+    <td style="height: 31px;" width="90">
+    <p>adam</p>
+    </td>
+    <td style="height: 31px;" width="156">
+    <p>0. 824</p>
+    </td>
+    </tr>
+    <tr style="height: 31px; text-align: center;">
+    <td style="height: 31px;" width="79">
+    <p>4</p>
+    </td>
+    <td style="height: 31px;" width="360">
+    <p>1 &ndash; Relu - 90</p>
+    </td>
+    <td style="height: 31px;" width="72">
+    <p>50</p>
+    </td>
+    <td style="height: 31px;" width="90">
+    <p>adam</p>
+    </td>
+    <td style="height: 31px;" width="156">
+    <p>0.824</p>
+    </td>
+    </tr>
+    <tr style="height: 31px; text-align: center;">
+    <td style="height: 31px;" width="79">
+    <p>5</p>
+    </td>
+    <td style="height: 31px;" width="360">
+    <p>1-Sigmoid - 90</p>
+    </td>
+    <td style="height: 31px;" width="72">
+    <p>50</p>
+    </td>
+    <td style="height: 31px;" width="90">
+    <p>adam</p>
+    </td>
+    <td style="height: 31px;" width="156">
+    <p>0.824</p>
+    </td>
+    </tr>
+    <tr style="height: 31px; text-align: center;">
+    <td style="height: 31px;" width="79">
+    <p>6</p>
+    </td>
+    <td style="height: 31px;" width="360">
+    <p>1-Sigmoid- 90</p>
+    </td>
+    <td style="height: 31px;" width="72">
+    <p>80</p>
+    </td>
+    <td style="height: 31px;" width="90">
+    <p>adam</p>
+    </td>
+    <td style="height: 31px;" width="156">
+    <p>0.824</p>
+    </td>
+    </tr>
+    <tr style="height: 31px; text-align: center;">
+    <td style="height: 31px;" width="79">
+    <p>7</p>
+    </td>
+    <td style="height: 31px;" width="360">
+    <p>1-Relu - 90</p>
+    </td>
+    <td style="height: 31px;" width="72">
+    <p>80</p>
+    </td>
+    <td style="height: 31px;" width="90">
+    <p>adam</p>
+    </td>
+    <td style="height: 31px;" width="156">
+    <p>0.811</p>
+    </td>
+    </tr>
+    <tr style="height: 61px; text-align: center;">
+    <td style="height: 61px;" width="79">
+    <p>8</p>
+    </td>
+    <td style="height: 61px;" width="360">
+    <p>1-Relu -90</p>
+    <p>2-Relu - 90</p>
+    </td>
+    <td style="height: 61px;" width="72">
+    <p>50</p>
+    </td>
+    <td style="height: 61px;" width="90">
+    <p>adam</p>
+    </td>
+    <td style="height: 61px;" width="156">
+    <p>0.811</p>
+    </td>
+    </tr>
+    <tr style="height: 61px; text-align: center;">
+    <td style="height: 61px;" width="79">
+    <p>9</p>
+    </td>
+    <td style="height: 61px;" width="360">
+    <p>1-Relu - 90</p>
+    <p>2-Relu - 90</p>
+    </td>
+    <td style="height: 61px;" width="72">
+    <p>35</p>
+    </td>
+    <td style="height: 61px;" width="90">
+    <p>adam</p>
+    </td>
+    <td style="height: 61px;" width="156">
+    <p>0.824</p>
+    </td>
+    </tr>
+    <tr style="height: 31px; text-align: center;">
+    <td style="height: 31px;" width="79">
+    <p>10</p>
+    </td>
+    <td style="height: 31px;" width="360">
+    <p>1 &ndash; Relu - 10</p>
+    </td>
+    <td style="height: 31px;" width="72">
+    <p>50</p>
+    </td>
+    <td style="height: 31px;" width="90">
+    <p>adam</p>
+    </td>
+    <td style="height: 31px;" width="156">
+    <p>0.784</p>
+    </td>
+    </tr>
+    <tr style="height: 31px; text-align: center;">
+    <td style="height: 31px;" width="79">
+    <p>11</p>
+    </td>
+    <td style="height: 31px;" width="360">
+    <p>1 &ndash; Relu - 10</p>
+    </td>
+    <td style="height: 31px;" width="72">
+    <p>100</p>
+    </td>
+    <td style="height: 31px;" width="90">
+    <p>adam</p>
+    </td>
+    <td style="height: 31px;" width="156">
+    <p>0.818</p>
+    </td>
+    </tr>
+    <tr style="height: 31px; text-align: center;">
+    <td style="height: 31px;" width="79">
+    <p>12</p>
+    </td>
+    <td style="height: 31px;" width="360">
+    <p>1 &ndash; Relu - 20</p>
+    </td>
+    <td style="height: 31px;" width="72">
+    <p>50</p>
+    </td>
+    <td style="height: 31px;" width="90">
+    <p>adam</p>
+    </td>
+    <td style="height: 31px;" width="156">
+    <p>0.824</p>
+    </td>
+    </tr>
+    <tr style="height: 31px; text-align: center;">
+    <td style="height: 31px;" width="79">
+    <p>13</p>
+    </td>
+    <td style="height: 31px;" width="360">
+    <p>1 &ndash; Relu - 50</p>
+    </td>
+    <td style="height: 31px;" width="72">
+    <p>50</p>
+    </td>
+    <td style="height: 31px;" width="90">
+    <p>adam</p>
+    </td>
+    <td style="height: 31px;" width="156">
+    <p>0.824</p>
+    </td>
+    </tr>
+    <tr style="height: 31px; text-align: center;">
+    <td style="height: 31px;" width="79">
+    <p>14</p>
+    </td>
+    <td style="height: 31px;" width="360">
+    <p>1 &ndash; Relu - 100</p>
+    </td>
+    <td style="height: 31px;" width="72">
+    <p>35</p>
+    </td>
+    <td style="height: 31px;" width="90">
+    <p>adam</p>
+    </td>
+    <td style="height: 31px;" width="156">
+    <p>0.824</p>
+    </td>
+    </tr>
+    <tr style="height: 91px; text-align: center;">
+    <td style="height: 91px;" width="79">
+    <p>15</p>
+    </td>
+    <td style="height: 91px;" width="360">
+    <p>1 &ndash; Relu &ndash; 100</p>
+    <p>2 &ndash; Relu &ndash; 50</p>
+    <p>3 &ndash; Relu - 25</p>
+    </td>
+    <td style="height: 91px;" width="72">
+    <p>35</p>
+    </td>
+    <td style="height: 91px;" width="90">
+    <p>adam</p>
+    </td>
+    <td style="height: 91px;" width="156">
+    <p>0.824</p>
+    </td>
+    </tr>
+    <tr style="height: 91px; text-align: center;">
+    <td style="height: 91px;" width="79">
+    <p>16</p>
+    </td>
+    <td style="height: 91px;" width="360">
+    <p>1 &ndash; Relu &ndash; 100</p>
+    <p>2 &ndash; Relu &ndash; 100</p>
+    <p>3 &ndash; Relu - 100</p>
+    </td>
+    <td style="height: 91px;" width="72">
+    <p>35</p>
+    </td>
+    <td style="height: 91px;" width="90">
+    <p>adam</p>
+    </td>
+    <td style="height: 91px;" width="156">
+    <p>0.797</p>
+    </td>
+    </tr>
+    <tr style="height: 91px; text-align: center;">
+    <td style="height: 91px;" width="79">
+    <p>17</p>
+    </td>
+    <td style="height: 91px;" width="360">
+    <p>1 &ndash; Relu &ndash; 100</p>
+    <p>2 &ndash; Relu &ndash; 20</p>
+    <p>3 &ndash; Relu - 2</p>
+    </td>
+    <td style="height: 91px;" width="72">
+    <p>35</p>
+    </td>
+    <td style="height: 91px;" width="90">
+    <p>adam</p>
+    </td>
+    <td style="height: 91px;" width="156">
+    <p>0.797</p>
+    </td>
+    </tr>
+    <tr style="height: 91px; text-align: center;">
+    <td style="height: 91px;" width="79">
+    <p>19</p>
+    </td>
+    <td style="height: 91px;" width="360">
+    <p>1 &ndash; Relu &ndash; 100</p>
+    <p>2 &ndash; Relu &ndash; 75</p>
+    <p>3 &ndash; Relu - 50</p>
+    </td>
+    <td style="height: 91px;" width="72">
+    <p>35</p>
+    </td>
+    <td style="height: 91px;" width="90">
+    <p>adam</p>
+    </td>
+    <td style="height: 91px;" width="156">
+    <p>0.811</p>
+    </td>
+    </tr>
+    <tr style="height: 121px; text-align: center;">
+    <td style="height: 121px;" width="79">
+    <p>20</p>
+    </td>
+    <td style="height: 121px;" width="360">
+    <p>1 &ndash; Relu &ndash; 100</p>
+    <p>2 &ndash; Relu &ndash; 75</p>
+    <p>3 &ndash; Relu &ndash; 50</p>
+    <p>4 &ndash; Relu - 25</p>
+    </td>
+    <td style="height: 121px;" width="72">
+    <p>35</p>
+    </td>
+    <td style="height: 121px;" width="90">
+    <p>adam</p>
+    </td>
+    <td style="height: 121px;" width="156">
+    <p>0.797</p>
+    </td>
+    </tr>
+    <tr style="height: 121px; text-align: center;">
+    <td style="height: 121px;" width="79">
+    <p>21</p>
+    </td>
+    <td style="height: 121px;" width="360">
+    <p>1 &ndash; Relu &ndash; 100</p>
+    <p>2 &ndash; Relu &ndash; 50</p>
+    <p>3 &ndash; Relu &ndash; 25</p>
+    <p>4 &ndash; Relu - 2</p>
+    </td>
+    <td style="height: 121px;" width="72">
+    <p>35</p>
+    </td>
+    <td style="height: 121px;" width="90">
+    <p>adam</p>
+    </td>
+    <td style="height: 121px;" width="156">
+    <p>0.824</p>
+    </td>
+    </tr>
+    <tr style="height: 31px; text-align: center;">
+    <td style="height: 31px;" width="79">
+    <p>22</p>
+    </td>
+    <td style="height: 31px;" width="360">
+    <p>1 &ndash; Relu &ndash; 50</p>
+    </td>
+    <td style="height: 31px;" width="72">
+    <p>50</p>
+    </td>
+    <td style="height: 31px;" width="90">
+    <p>rmsprop</p>
+    </td>
+    <td style="height: 31px;" width="156">
+    <p>0.818</p>
+    </td>
+    </tr>
+    </tbody>
+    </table>
     </div>
-      </div>
-      </div>
+</div>
+</div>
+</div>
 </body>
 </html>
