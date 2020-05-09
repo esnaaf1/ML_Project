@@ -1,3 +1,5 @@
+ML_Project
+
 This project involves machine learning techniques that was used in the final project for the University of Minnesota Data Analytics Boot Camp. This project was designed to showcase our skills with machine learning and using that to work with the data.
 
 The group is made up of Beryl Kaczmarczik, Farshad Esnaashari, Katherine Rootes, and Matt Pollari.
